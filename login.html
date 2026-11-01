@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masuk - ROALSHOES</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+  <header id="navbar"></header>
+
+  <main class="container">
+    <div class="form-wrap card">
+      <h2>Masuk ke <span class="accent">Roalshoes</span></h2>
+      <p style="margin-bottom:18px">Pilih jenis akun lalu masukkan data login.</p>
+
+      <div class="tabs">
+        <button type="button" class="active" data-role="pelanggan">Pelanggan</button>
+        <button type="button" data-role="admin">Admin</button>
+      </div>
+
+      <div id="pesan" class="alert"></div>
+
+      <form id="form-login" novalidate>
+        <div class="form-group">
+          <label for="identitas">Username atau Email</label>
+          <input type="text" id="identitas" placeholder="contoh: pelanggan" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Password" autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+      </form>
+
+      <p style="margin-top:16px;text-align:center">Belum punya akun? <a class="accent" href="register.html"><strong>Daftar di sini</strong></a></p>
+
+      <div class="demo-box">
+        <strong>Akun demo (simulasi lokal):</strong><br>
+        Admin: <code>admin</code> / <code>admin123</code><br>
+        Pelanggan: <code>pelanggan</code> / <code>user123</code>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer"></footer>
+  <script src="config/data.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

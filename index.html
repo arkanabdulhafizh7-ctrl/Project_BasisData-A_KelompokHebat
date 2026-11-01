@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROALSHOES - Jasa Cuci &amp; Perawatan Sepatu</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+  <header id="navbar"></header>
+
+  <section class="hero">
+    <div class="container">
+      <div>
+        <h1>Sepatu Bersih, <span class="accent">Percaya Diri</span> Kembali.</h1>
+        <p>Roalshoes menyediakan jasa cuci dan perawatan sepatu profesional. Pilih layanan, pesan online, dan pantau progres pengerjaan sepatumu.</p>
+        <div class="hero-actions">
+          <a href="customer/pemesanan.html" class="btn btn-primary">Pesan Sekarang</a>
+          <a href="#layanan" class="btn btn-outline">Lihat Layanan</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">👟</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title"><h2>Tentang <span class="accent">Roalshoes</span></h2>
+        <p>Usaha jasa cuci dan perawatan sepatu untuk mahasiswa, pekerja, dan pecinta sneakers. Setiap pasang sepatu dikerjakan dengan teliti sesuai bahannya.</p></div>
+      <div class="grid grid-4">
+        <div class="card"><h3>✨ Hasil Maksimal</h3><p>Teknik pembersihan sesuai jenis bahan sepatu.</p></div>
+        <div class="card"><h3>💰 Harga Jelas</h3><p>Daftar harga transparan, total dihitung otomatis.</p></div>
+        <div class="card"><h3>📍 Pantau Status</h3><p>Lihat progres pengerjaan kapan saja.</p></div>
+        <div class="card"><h3>🧾 Riwayat Tersimpan</h3><p>Semua transaksi tercatat rapi di akun kamu.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="layanan">
+    <div class="container">
+      <div class="section-title"><h2>Layanan <span class="accent">Unggulan</span></h2>
+        <p>Harga dapat berubah sewaktu-waktu (data simulasi).</p></div>
+      <div class="grid grid-3" id="daftar-layanan"></div>
+    </div>
+  </section>
+
+  <section class="section" id="cara-pesan">
+    <div class="container">
+      <div class="section-title"><h2>Cara <span class="accent">Pemesanan</span></h2></div>
+      <div class="grid grid-4">
+        <div class="card"><div class="step-num">1</div><h3>Daftar &amp; Masuk</h3><p>Buat akun pelanggan lalu login.</p></div>
+        <div class="card"><div class="step-num">2</div><h3>Pilih Layanan</h3><p>Isi form pemesanan dan jumlah sepatu.</p></div>
+        <div class="card"><div class="step-num">3</div><h3>Serahkan Sepatu</h3><p>Antar sepatu ke gerai setelah pesanan dikonfirmasi.</p></div>
+        <div class="card"><div class="step-num">4</div><h3>Pantau &amp; Ambil</h3><p>Pantau status hingga sepatu siap diambil.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="section-title"><h2>Kata <span class="accent">Pelanggan</span></h2><p>Testimoni contoh (simulasi).</p></div>
+      <div class="grid grid-3">
+        <div class="card quote">"Midsole putihku balik cerah lagi. Prosesnya gampang dipantau."<small>Rani, Mahasiswa</small></div>
+        <div class="card quote">"Sepatu kulit kerjaku jadi mengilap, harga sesuai yang tertera."<small>Dimas, Karyawan</small></div>
+        <div class="card quote">"Recolor sneakers hasilnya rapi banget. Recommended!"<small>Fajar, Kolektor Sneakers</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Siap bikin sepatumu seperti baru?</h2>
+      <p>Daftar gratis dan buat pesanan pertamamu hari ini.</p>
+      <a href="register.html" class="btn">Daftar Sekarang</a>
+    </div>
+  </section>
+
+  <footer id="footer"></footer>
+
+  <script src="config/data.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script>
+    // Tampilkan layanan aktif dari LocalStorage (sama dengan data admin)
+    const ikon = { "Fast Cleaning": "⚡", "Deep Cleaning": "🧼", "Unyellowing": "🌟", "Leather Treatment": "👞", "Repaint / Recolor": "🎨" };
+    document.getElementById("daftar-layanan").innerHTML = DB.get("services")
+      .filter(s => s.is_active)
+      .map(s => `<div class="card service-card">
+        <div class="icon">${ikon[s.nama_layanan] || "👟"}</div>
+        <h3>${escapeHtml(s.nama_layanan)}</h3>
+        <p>${escapeHtml(s.deskripsi)}</p>
+        <div class="price">${rupiah(s.harga)}</div>
+        <div class="meta">per pasang · estimasi ${s.estimasi_hari} hari</div>
+        <a class="btn btn-primary btn-sm" href="customer/pemesanan.html?layanan=${s.id_service}">Pesan Layanan</a>
+      </div>`).join("") || '<p class="empty">Belum ada layanan.</p>';
+  </script>
+</body>
+</html>
