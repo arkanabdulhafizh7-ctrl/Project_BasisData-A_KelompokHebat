@@ -104,7 +104,7 @@ function renderFooter() {
   if (!el) return;
   el.className = "footer";
   el.innerHTML = `<div class="container"><strong style="color:#fff">ROAL<span class="accent">SHOES</span></strong>
-    <p>Jasa Cuci &amp; Perawatan Sepatu · Proyek UAS Sistem Informasi (data simulasi)</p>
+    <p>Jasa Cuci &amp; Rawat Sepatu</p>
     <p style="margin-top:8px"><strong style="color:#fff">Kelompok Hebat</strong></p>
     <p style="font-size:.82rem;line-height:1.8">
       Muhammad Alfarel Prihadi (4525210083) · Farid Zhahir Muttaqin (4525210105) ·
