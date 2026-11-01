@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Pesanan - ROALSHOES</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-base="../">
+  <div class="admin-layout">
+    <aside id="sidebar"></aside>
+    <main class="admin-main">
+      <div class="admin-top"><h1>Data <span class="accent">Pesanan</span></h1></div>
+      <div class="toolbar">
+        <input type="text" id="cari" placeholder="Cari kode atau nama pelanggan...">
+        <select id="filter-status" style="max-width:220px"></select>
+      </div>
+      <div class="card table-wrap">
+        <table>
+          <thead><tr><th>Kode</th><th>Pelanggan</th><th>Tanggal</th><th>Layanan</th><th>Total</th><th>Status</th><th>Bayar</th><th>Aksi</th></tr></thead>
+          <tbody id="isi-pesanan"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal detail pesanan -->
+  <div class="modal-bg" id="modal-pesanan">
+    <div class="modal" style="width:min(720px,100%)">
+      <h3>Detail Pesanan</h3>
+      <div id="isi-detail"></div>
+    </div>
+  </div>
+
+  <script src="../config/data.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

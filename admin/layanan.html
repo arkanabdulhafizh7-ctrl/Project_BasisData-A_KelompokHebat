@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Layanan - ROALSHOES</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-base="../">
+  <div class="admin-layout">
+    <aside id="sidebar"></aside>
+    <main class="admin-main">
+      <div class="admin-top">
+        <h1>Data <span class="accent">Layanan</span></h1>
+        <button class="btn btn-primary" id="btn-tambah">+ Tambah Layanan</button>
+      </div>
+      <div class="card table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>Layanan</th><th>Harga</th><th>Estimasi</th><th>Status</th><th>Aksi</th></tr></thead>
+          <tbody id="isi-layanan"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal tambah/edit layanan -->
+  <div class="modal-bg" id="modal-layanan">
+    <div class="modal">
+      <h3 id="judul-layanan">Tambah Layanan</h3>
+      <div id="pesan-layanan" class="alert"></div>
+      <form id="form-layanan" novalidate>
+        <input type="hidden" id="id_service">
+        <div class="form-group"><label for="nama_layanan">Nama Layanan</label>
+          <input type="text" id="nama_layanan"></div>
+        <div class="form-group"><label for="deskripsi">Deskripsi</label>
+          <textarea id="deskripsi" rows="3"></textarea></div>
+        <div class="form-group"><label for="harga">Harga (Rp)</label>
+          <input type="number" id="harga" min="1000" step="1000"></div>
+        <div class="form-group"><label for="estimasi_hari">Estimasi (hari)</label>
+          <input type="number" id="estimasi_hari" min="1" max="30" value="3"></div>
+        <div class="form-group"><label for="is_active">Status</label>
+          <select id="is_active"><option value="1">Aktif</option><option value="0">Nonaktif</option></select></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline btn-sm" id="btn-batal-layanan">Batal</button>
+          <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../config/data.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

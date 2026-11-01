@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - ROALSHOES</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-base="../">
+  <div class="admin-layout">
+    <aside id="sidebar"></aside>
+    <main class="admin-main">
+      <div class="admin-top"><h1>Dashboard <span class="accent">Admin</span></h1></div>
+
+      <div class="grid grid-4" style="margin-bottom:24px">
+        <div class="stat-card"><div class="num" id="stat-pelanggan">0</div><div class="lbl">Total Pelanggan</div></div>
+        <div class="stat-card"><div class="num" id="stat-pesanan">0</div><div class="lbl">Total Pesanan</div></div>
+        <div class="stat-card"><div class="num" id="stat-dikerjakan">0</div><div class="lbl">Sedang Dikerjakan</div></div>
+        <div class="stat-card"><div class="num" id="stat-selesai">0</div><div class="lbl">Pesanan Selesai</div></div>
+      </div>
+      <div class="stat-card" style="margin-bottom:24px">
+        <div class="num" id="stat-transaksi">Rp0</div><div class="lbl">Total Transaksi (pembayaran Lunas)</div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:12px">Pesanan Terbaru</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Kode</th><th>Pelanggan</th><th>Layanan</th><th>Total</th><th>Status</th></tr></thead>
+          <tbody id="isi-terbaru"></tbody>
+        </table></div>
+        <p style="margin-top:12px"><a class="accent" href="pesanan.html"><strong>Lihat semua pesanan →</strong></a></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="../config/data.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>
