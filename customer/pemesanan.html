@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemesanan - ROALSHOES</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-base="../">
+  <header id="navbar"></header>
+  <div class="page-head"><div class="container"><h1>Buat <span class="accent">Pesanan</span></h1></div></div>
+
+  <main class="container page-body">
+    <div class="card" style="max-width:640px;margin:0 auto">
+      <div id="pesan" class="alert"></div>
+      <form id="form-order" novalidate>
+        <div class="form-group"><label for="nama">Nama Pelanggan</label>
+          <input type="text" id="nama" readonly></div>
+        <div class="form-group"><label for="no_hp">Nomor Telepon</label>
+          <input type="tel" id="no_hp" placeholder="08xxxxxxxxxx"></div>
+        <div class="form-group"><label for="layanan">Jenis Layanan</label>
+          <select id="layanan"></select>
+          <small id="estimasi" style="color:#777"></small></div>
+        <div class="form-group"><label for="merek">Merek / Jenis Sepatu</label>
+          <input type="text" id="merek" placeholder="contoh: Nike Air Force 1"></div>
+        <div class="form-group"><label for="jumlah">Jumlah Sepatu (pasang)</label>
+          <input type="number" id="jumlah" min="1" max="20" value="1"></div>
+        <div class="form-group"><label for="catatan">Catatan Tambahan</label>
+          <textarea id="catatan" rows="3" placeholder="Opsional"></textarea></div>
+        <div class="form-group" style="background:#f5f5f5;padding:14px;border-radius:8px">
+          Total Harga: <span class="price" id="total" style="font-size:1.4rem">Rp0</span></div>
+        <button type="submit" class="btn btn-primary btn-block">Buat Pesanan</button>
+      </form>
+    </div>
+  </main>
+
+  <footer id="footer"></footer>
+  <script src="../config/data.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/order.js"></script>
+</body>
+</html>
