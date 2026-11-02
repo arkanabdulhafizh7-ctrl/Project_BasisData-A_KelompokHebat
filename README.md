@@ -37,6 +37,8 @@ Untuk mengembalikan data ke kondisi awal, buka Console browser (F12) lalu jalank
 - [Dokumentasi API (rancangan)](docs/API-Documentation.md)
 - [Database SQL](database/database.sql)
 
+---
+
 ## Anggota Kelompok
 
 <table>
