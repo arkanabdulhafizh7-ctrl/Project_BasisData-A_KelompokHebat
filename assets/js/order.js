@@ -219,7 +219,8 @@ const STATUS_BAYAR_TUNAI = "Menunggu Verifikasi";
 
 // Tujuan pembayaran toko. GANTI dengan data asli sebelum dipakai pelanggan.
 const DATA_PEMBAYARAN = {
-  qris: "assets/img/qris.png", // simpan gambar QRIS toko di path ini
+  // Halaman ini ada di folder customer/, jadi perlu "../" untuk naik satu folder.
+  qris: "../assets/img/qris.png", // simpan gambar QRIS toko di assets/img/qris.png
   rekening: [{ label: "BCA", nomor: "0000000000", atasNama: "ROALSHOES" }],
   ewallet: [{ label: "DANA", nomor: "080000000000", atasNama: "ROALSHOES" }]
 };
