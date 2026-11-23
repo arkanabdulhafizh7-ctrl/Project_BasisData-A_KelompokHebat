@@ -1,16 +1,15 @@
-# Dokumentasi API ROALSHOES (Rancangan)
+# Dokumentasi API ROALSHOES
 
-> **PERHATIAN:** Dokumen ini adalah **rancangan integrasi backend**. Website
-> Roalshoes saat ini memakai HTML, CSS, JavaScript, dan LocalStorage tanpa
-> backend, sehingga **endpoint di bawah belum berjalan**. Struktur data
-> mengikuti `database/database.sql`.
+> Backend Node.js/Express untuk endpoint di bawah tersedia di folder `backend`.
+> Halaman website saat ini masih memakai LocalStorage dan belum otomatis
+> menggunakan API. Struktur data mengikuti `database/database.sql`.
 
 ## 1. Deskripsi Umum
 
 | Item | Keterangan |
 |---|---|
 | Gaya API | REST, format JSON |
-| Base URL (rencana) | `http://localhost:3000/api` |
+| Base URL | `http://localhost:3000/api` |
 | Autentikasi | JWT melalui header `Authorization: Bearer <token>` |
 | Peran | `pelanggan` dan `admin` |
 | Header umum | `Content-Type: application/json` |
@@ -264,4 +263,24 @@ Response `200 OK`. Error: `400`, `401`, `403`, `404`.
 
 ## 11. Batasan
 
-Dokumen ini belum diimplementasikan dan belum diuji. Saat backend dibuat, password harus di-hash, token JWT harus punya masa berlaku, dan validasi harus dilakukan di server (tidak cukup di browser).
+Backend menerapkan hash bcrypt untuk kata sandi baru, masa berlaku JWT, validasi server, dan otorisasi peran. Data akun contoh pada `database/database.sql` masih berisi kata sandi lama dalam teks biasa; backend mengubahnya menjadi hash ketika akun berhasil login pertama kali. Untuk database produksi, jangan gunakan kata sandi demo dan siapkan rahasia JWT yang kuat.
+
+## 12. Klien API Frontend
+
+File `assets/js/api.js` menyediakan wrapper `window.RoalshoesAPI` untuk endpoint di atas. Muat file ini sebelum skrip yang menggunakannya. Base URL default adalah `http://localhost:3000/api`; untuk menggantinya, tetapkan `window.ROALSHOES_API_BASE_URL` sebelum memuat file tersebut.
+
+Contoh:
+
+```html
+<script>window.ROALSHOES_API_BASE_URL = "http://localhost:3000/api";</script>
+<script src="assets/js/api.js"></script>
+<script>
+  RoalshoesAPI.auth.login({ identitas: "pelanggan", password: "user123" })
+    .then(function (result) { console.log(result.user); })
+    .catch(function (error) { console.error(error.message, error.status); });
+</script>
+```
+
+API tersedia melalui `auth.register/login/me/logout`, `services.list/get/create/update/remove`, `orders.list/get/create/update/updateStatus`, dan `payments.list/create/updateStatus`. Metode yang mengubah data menerima payload sesuai bagian endpoint masing-masing. Token JWT dari login disimpan dalam `sessionStorage` dan otomatis dikirim pada permintaan selanjutnya; `auth.logout()` menghapus token. Error HTTP ditolak sebagai `Error` dengan properti `status` dan `data` bila respons memiliki status gagal.
+
+Halaman yang ada masih membaca/menulis LocalStorage melalui `config/data.js` dan belum memakai klien tersebut. Backend dan kliennya tersedia, tetapi integrasi alur UI tetap perlu dilakukan.

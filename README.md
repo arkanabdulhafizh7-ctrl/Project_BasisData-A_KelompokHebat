@@ -2,7 +2,7 @@
 
 *Clean Your Kicks, Keep Your Style*
 
-ROALSHOES adalah website jasa cuci dan perawatan sepatu yang membantu pelanggan melihat layanan, memesan, mencatat pembayaran, dan memantau progres pengerjaan sepatu. Admin mengelola layanan, pelanggan, dan pesanan lewat dashboard. Proyek ini berupa website dengan data simulasi (LocalStorage), tanpa backend.
+ROALSHOES adalah website jasa cuci dan perawatan sepatu yang membantu pelanggan melihat layanan, memesan, mencatat pembayaran, dan memantau progres pengerjaan sepatu. Admin mengelola layanan, pelanggan, dan pesanan lewat dashboard. Proyek ini menyediakan website frontend dan backend REST; halaman frontend saat ini masih memakai data simulasi (LocalStorage).
 
 ## Fitur
 
@@ -25,7 +25,29 @@ ROALSHOES adalah website jasa cuci dan perawatan sepatu yang membantu pelanggan 
 
 Untuk mengembalikan data ke kondisi awal, buka Console browser (F12) lalu jalankan `DB.reset()`.
 
-> Data tersimpan di LocalStorage browser dan login hanya simulasi (bukan autentikasi aman). File `database/database.sql` dan dokumentasi API adalah rancangan untuk backend di masa depan dan belum terhubung ke website.
+> Halaman website yang ada masih menggunakan LocalStorage. Backend REST sekarang tersedia di folder `backend`, tetapi alur UI belum dipindahkan dari LocalStorage secara otomatis.
+
+## Klien API
+
+`assets/js/api.js` menyediakan klien JavaScript untuk backend pada [dokumentasi API](docs/API-Documentation.md). Muat file tersebut sebelum skrip halaman dan panggil `window.RoalshoesAPI`; URL default-nya `http://localhost:3000/api`. Untuk backend di URL lain, tetapkan `window.ROALSHOES_API_BASE_URL` sebelum memuat file API.
+
+Contoh:
+
+```html
+<script>window.ROALSHOES_API_BASE_URL = "http://localhost:3000/api";</script>
+<script src="assets/js/api.js"></script>
+<script>
+  RoalshoesAPI.services.list()
+    .then(function (response) { console.log(response.data); })
+    .catch(function (error) { console.error(error.message); });
+</script>
+```
+
+Login menyimpan JWT di `sessionStorage` dan permintaan berikutnya akan mengirimkannya sebagai `Authorization: Bearer <token>`.
+
+## Menjalankan Backend
+
+Lihat [petunjuk backend](backend/README.md) untuk persiapan MySQL, konfigurasi `.env`, dan menjalankan server API. Backend menggunakan Node.js 18.11 atau lebih baru. Jangan jalankan skrip database sebelum membaca peringatannya: skrip tersebut menghapus lalu membuat ulang database `roalshoes_db`.
 
 ## Dokumentasi
 
@@ -34,8 +56,9 @@ Untuk mengembalikan data ke kondisi awal, buka Console browser (F12) lalu jalank
 - [Class Diagram](docs/Class-Diagram.md)
 - [Sequence Diagram](docs/Sequence-Diagram.md)
 - [Use Case Diagram](docs/Use-Case.md)
-- [Dokumentasi API (rancangan)](docs/API-Documentation.md)
+- [Dokumentasi API](docs/API-Documentation.md)
 - [Database SQL](database/database.sql)
+- [Backend](backend/README.md)
 
 ---
 
